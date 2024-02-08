@@ -1,0 +1,11 @@
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+    margin: 10px;
+}
+mat-card{
+  box-shadow: gray;
+}

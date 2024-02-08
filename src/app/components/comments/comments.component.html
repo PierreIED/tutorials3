@@ -1,0 +1,13 @@
+<button mat-raised-button
+        [matBadge]=comments.length
+        matBadgePosition="before"
+        matBadgeColor="accent"
+        color="primary"
+        [disabled]="comments.length == 0"
+        (click)="comVisibility = !comVisibility" >
+
+  Commentaires</button>
+
+<mat-list  *ngFor="let com of comments" >
+  <mat-list-item *ngIf="comVisibility">{{com}}</mat-list-item>
+</mat-list>

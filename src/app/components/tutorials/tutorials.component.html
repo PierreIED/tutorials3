@@ -1,0 +1,50 @@
+<h2>Tutoriels :</h2>
+<mat-form-field>
+  <mat-label>Tri</mat-label>
+  <mat-select [(value)]="sort" >
+    <mat-option value="DESC">
+      plus récents
+    </mat-option>
+    <mat-option value="ASC"> plus anciens </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="container" *ngFor="let tuto of tutorials |sortTutorialByDate:sort" >
+    <mat-card  appHoverHighlight>
+        <mat-card-header>
+            <mat-card-title>
+                {{tuto.title}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{tuto.description}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{tuto.content}}</p>
+            <p>
+                <mat-chip disabled="false">{{tuto.author.firstName}} {{tuto.author.lastName | uppercase}}</mat-chip>
+                <mat-chip disabled="false">{{tuto.author.email}} </mat-chip>
+            </p>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <mat-card-subtitle>
+                    En ligne depuis le {{tuto.creationDate | date}}
+                </mat-card-subtitle>
+                <button mat-raised-button color="primary">
+                    <mat-icon>visibility</mat-icon>
+                    Details</button>
+                <button mat-raised-button>
+                    <mat-icon>share</mat-icon>
+                    Partager</button>
+            </mat-card-actions>
+
+
+        </mat-card-content>
+
+        <mat-card-footer>
+          <app-comments [comments]="tuto.comments">
+
+          </app-comments>
+        </mat-card-footer>
+    </mat-card>
+</div>
