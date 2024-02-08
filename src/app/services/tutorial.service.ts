@@ -5,7 +5,7 @@ import {Category} from "../models/category";
 @Injectable({
   providedIn: 'root'
 })
-export class TutorialServiceService {
+export class TutorialService {
 
   tutorials : Array<Tutorial> =
     [

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tutorial } from '../../models/tutorial';
 import { Category } from '../../models/category';
 import { MatCardModule } from '@angular/material/card';
@@ -16,7 +16,7 @@ import {MatList, MatListItem} from "@angular/material/list";
 import {HoverHighlightDirective} from "../../directives/hover-highlight.directive";
 import {CommentsComponent} from "../comments/comments.component";
 import {NavbarComponent} from "../navbar/navbar.component";
-import {TutorialServiceService} from "../../services/tutorial-service.service";
+import {TutorialService} from "../../services/tutorial.service";
 
 @Component({
   selector: 'app-tutorials',
@@ -36,10 +36,10 @@ import {TutorialServiceService} from "../../services/tutorial-service.service";
   templateUrl: './tutorials.component.html',
   styleUrl: './tutorials.component.css'
 })
-export class TutorialsComponent {
+export class TutorialsComponent implements OnInit{
   tutorials!: Tutorial[];
     sort: string = 'DESC';
-    constructor(private tutorialService: TutorialServiceService) {
+    constructor(private tutorialService: TutorialService) {
 
     }
 

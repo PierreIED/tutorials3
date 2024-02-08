@@ -4,9 +4,9 @@ import {Category} from "../models/category";
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryServiceService {
+export class CategoryService {
 
-  categories: Array<Category> = [
+  /*categories: Array<Category> = [
       {Name:"Java", Id :0},
       {Name:"Javascript", Id:1},
       {Name:"Typescript",Id:2},
@@ -19,11 +19,11 @@ export class CategoryServiceService {
       {Name:"Rust",Id:9},
       {Name:"VBA",Id:10},
 
-  ]
-  constructor() {
+  ]*/
+  constructor(private httpClient: HttpClient) {
   }
 
-  getCategories(): Category[]{
-    return this.categories;
+  getCategories(): Observable<Category>[]{
+    return this.httpClient.get<Category[]>('https://localhost:7019/api/Categories');
   }
 }

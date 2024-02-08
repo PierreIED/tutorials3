@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {NavbarComponent} from "../navbar/navbar.component";
-import {CategoryServiceService} from "../../services/category-service.service";
+import {CategoryService} from "../../services/category.service";
 import {Category} from "../../models/category";
+
 
 @Component({
   selector: 'app-categories',
@@ -13,9 +14,9 @@ import {Category} from "../../models/category";
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
-export class CategoriesComponent {
-  categories!: Category[];
-  constructor(private categoryService: CategoryServiceService){
+export class CategoriesComponent implements OnInit {
+  categories$: Observable<Category[]>;
+  constructor(private categoryService: CategoryService){
 
   }
   ngOnInit(){
